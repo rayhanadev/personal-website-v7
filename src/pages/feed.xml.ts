@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 import rss from "@astrojs/rss";
 
@@ -13,11 +13,11 @@ export const GET: APIRoute = async () => {
     site: import.meta.env.SITE,
     items: await Promise.all(
       blog.map(async (post) => {
-        const { remarkPluginFrontmatter } = await post.render();
+        const { remarkPluginFrontmatter } = await render(post);
         return {
           title: post.data.title,
           description: post.data.description,
-          link: `/blog/${post.slug}/`,
+          link: `/blog/${post.id}/`,
           pubDate: remarkPluginFrontmatter.lastModified,
           language: "en-us",
           copyright: `Copyright © ${new Date().getUTCFullYear()}, Rayhan Noufal Arayilakath`,
@@ -28,7 +28,7 @@ export const GET: APIRoute = async () => {
           ttl: 60,
           lastBuildDate: new Date(),
         };
-      })
+      }),
     ),
   });
 };

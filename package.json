@@ -9,8 +9,8 @@
     "build": "astro build",
     "lint": "astro check",
     "lint:fix": "astro check --fix",
-    "format": "prettier --check */**/*.{js,json,ts,tsx,css,md} --cache --cache-strategy metadata",
-    "format:fix": "prettier --write */**/*.{js,json,ts,tsx,css,md} --cache --cache-strategy metadata",
+    "format": "prettier --check */**/*.{js,json,ts,css,md} --cache --cache-strategy metadata",
+    "format:fix": "prettier --write */**/*.{js,json,ts,css,md} --cache --cache-strategy metadata",
     "prepare": "husky"
   },
   "dependencies": {
@@ -38,6 +38,8 @@
     "@types/bun": "^1.1.14",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.7.2"
   }
 }
