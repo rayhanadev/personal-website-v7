@@ -4,16 +4,24 @@ import { ClientRouter } from "astro:transitions";
 
 import { Head } from "astro-capo";
 import { SEO } from "astro-seo";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 
 import { JSONLD } from "lib/consts";
 
 import "styles/global.css";
 
-const { title, description, og, twitter } = Astro.props;
+const { title, description, date, slug, og, twitter } = Astro.props;
+
+dayjs.extend(utc);
+dayjs.extend(advancedFormat);
 
 export interface Props {
   title: string;
   description: string;
+  date: Date | string;
+  slug: string;
   og?: {
     title: string;
     description: string;
@@ -59,34 +67,45 @@ export interface Props {
     />
 
     <SEO
-      title={title}
+      title={`${title} | Ray Arayilakath`}
       description={description}
-      canonical={import.meta.env.SITE}
+      canonical="https://www.rayhanadev.com"
       openGraph={{
         basic: {
-          type: "website",
-          title: og?.title ?? title,
-          image: `${import.meta.env.SITE}/opengraph.png`,
+          type: "article",
+          title: og && og.title ? og.title : `${title} | Ray Arayilakath`,
+          image: `${import.meta.env.SITE}/open-graph/${slug}.png`,
         },
         optional: {
-          description: og?.description ?? description,
+          description: og && og.description ? og.description : description,
           locale: "en-US",
           siteName: "rayhanadev.com",
         },
         image: {
-          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
+          alt: `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
           type: "image/png",
+        },
+        article: {
+          publishedTime: date.toString(),
+          modifiedTime: date.toString(),
+          authors: ["Rayhan Noufal Arayilakath"],
+          section: "Blog",
+          tags: ["rayhanadev", "ray arayilakath", "fullstack web developer"],
         },
       }}
       twitter={{
-        title: twitter?.title ?? title,
-        description: twitter?.description ?? description,
-        image: `${import.meta.env.SITE}/opengraph.png`,
+        title:
+          twitter && twitter.title
+            ? twitter.title
+            : `${title} | Ray Arayilakath`,
+        description:
+          twitter && twitter.description ? twitter.description : description,
+        image: `${import.meta.env.SITE}/open-graph/${slug}.png`,
         imageAlt:
-          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
+          `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
         card: "summary_large_image",
-        site: "rayhanadev",
-        creator: "rayhanadev",
+        site: "@rayhanadev",
+        creator: "@rayhanadev",
       }}
     />
 
@@ -99,7 +118,6 @@ export interface Props {
     />
 
     <meta name="author" content="Rayhan Noufal Arayilakath" />
-    <link rel="me" href="https://hachyderm.io/@rayhanadev">Mastodon</a>
     <meta
       name="keywords"
       content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
@@ -119,7 +137,7 @@ export interface Props {
         window.dataLayer = window.dataLayer || [];
         function gtag() {
           dataLayer.push(arguments);
-          }
+        }
         gtag("js", new Date());
         gtag("config", PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID);
       </script>
@@ -128,10 +146,6 @@ export interface Props {
     <ClientRouter />
   </Head>
   <body class="flex flex-col min-h-[850px] pt-8 md:pt-16">
-    <main
-      class="flex flex-col items-start justify-start w-[340px] md:w-[500px] mx-auto pt-16 min-h-16"
-    >
-      <slot />
-    </main>
+
   </body>
 </html>
