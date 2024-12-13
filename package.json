@@ -1,13 +1,17 @@
 {
   "name": "personal-website-v7",
-  "type": "module",
   "version": "0.0.1",
+  "private": true,
+  "type": "module",
   "scripts": {
     "start": "astro dev",
     "dev": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "build": "astro build",
+    "lint": "astro check",
+    "lint:fix": "astro check --fix",
+    "format": "prettier --check */**/*.{js,json,ts,tsx,css,md} --cache --cache-strategy metadata",
+    "format:fix": "prettier --write */**/*.{js,json,ts,tsx,css,md} --cache --cache-strategy metadata",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -28,7 +32,12 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/types": "^19.5.0",
     "@types/bun": "^1.1.14",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "typescript": "^5.7.2"
   }
 }
