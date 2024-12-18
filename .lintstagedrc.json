@@ -1,4 +1,4 @@
 {
-  "*/**/*.{js,jsx,ts,tsx,astro}": ["prettier --write", "astro check"],
-  "*/**/*.{json,css,md}": ["prettier --write"]
+    "*/**/*.{astro}": ["astro check"],
+    "*/**/*.{js,jsx,ts,tsx,json,css,md}": ["prettier --write"]
 }

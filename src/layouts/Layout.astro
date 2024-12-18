@@ -12,126 +12,136 @@ import "styles/global.css";
 const { title, description, og, twitter } = Astro.props;
 
 export interface Props {
-  title: string;
-  description: string;
-  og?: {
     title: string;
     description: string;
-  };
-  twitter?: {
-    title: string;
-    description: string;
-  };
+    og?: {
+        title: string;
+        description: string;
+    };
+    twitter?: {
+        title: string;
+        description: string;
+    };
 }
 ---
 
 <!doctype html>
 <html lang="en">
-  <Head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <Head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(JSONLD)}
-    />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(JSONLD)}
+        />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
 
-    <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111111" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111111" />
 
-    <meta name="msapplication-TileColor" content="#00aba9" />
-    <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
-    <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#00aba9" />
+        <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
+        <meta name="theme-color" content="#ffffff" />
 
-    <meta
-      name="robots"
-      content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
-    />
+        <meta
+            name="robots"
+            content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+        />
 
-    <SEO
-      title={title}
-      description={description}
-      canonical={import.meta.env.SITE}
-      openGraph={{
-        basic: {
-          type: "website",
-          title: og?.title ?? title,
-          image: `${import.meta.env.SITE}/opengraph.png`,
-        },
-        optional: {
-          description: og?.description ?? description,
-          locale: "en-US",
-          siteName: "rayhanadev.com",
-        },
-        image: {
-          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
-          type: "image/png",
-        },
-      }}
-      twitter={{
-        title: twitter?.title ?? title,
-        description: twitter?.description ?? description,
-        image: `${import.meta.env.SITE}/opengraph.png`,
-        imageAlt:
-          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
-        card: "summary_large_image",
-        site: "rayhanadev",
-        creator: "rayhanadev",
-      }}
-    />
+        <SEO
+            title={title}
+            description={description}
+            canonical={import.meta.env.SITE}
+            openGraph={{
+                basic: {
+                    type: "website",
+                    title: og?.title ?? title,
+                    image: `${import.meta.env.SITE}/opengraph.png`,
+                },
+                optional: {
+                    description: og?.description ?? description,
+                    locale: "en-US",
+                    siteName: "rayhanadev.com",
+                },
+                image: {
+                    alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
+                    type: "image/png",
+                },
+            }}
+            twitter={{
+                title: twitter?.title ?? title,
+                description: twitter?.description ?? description,
+                image: `${import.meta.env.SITE}/opengraph.png`,
+                imageAlt:
+                    "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
+                card: "summary_large_image",
+                site: "rayhanadev",
+                creator: "rayhanadev",
+            }}
+        />
 
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS"
-      href={`${import.meta.env.SITE}/feed.xml`}
-    />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS"
+            href={`${import.meta.env.SITE}/feed.xml`}
+        />
 
-    <meta name="author" content="Rayhan Noufal Arayilakath" />
-    <link rel="me" href="https://hachyderm.io/@rayhanadev">Mastodon</a>
-    <meta
-      name="keywords"
-      content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
-    />
+        <meta name="author" content="Rayhan Noufal Arayilakath" />
+        <link rel="me" href="https://hachyderm.io/@rayhanadev" />
+        <meta
+            name="keywords"
+            content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
+        />
 
-    {import.meta.env.PROD && (
-      <script
-        async
-        is:inline
-        type="text/partytown"
-        src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
-      >
-      </script>
-      <script is:inline type="text/partytown">
-        import { PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID } from "astro:env/client";
+        {import.meta.env.PROD && (
+            <>
+            <script
+                async
+                is:inline
+                type="text/partytown"
+                src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
+            >
+            </script>
+            <script is:inline type="text/partytown">
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag("js", new Date());
+                gtag("config", PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID);
+            </script>
+            </>
+        )}
 
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-          }
-        gtag("js", new Date());
-        gtag("config", PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID);
-      </script>
-    )}
-
-    <ClientRouter />
-  </Head>
-  <body class="flex flex-col min-h-[850px] pt-8 md:pt-16">
-    <main
-      class="flex flex-col items-start justify-start w-[340px] md:w-[500px] mx-auto pt-16 min-h-16"
-    >
-      <slot />
-    </main>
-  </body>
+        <ClientRouter />
+    </Head>
+    <body class="flex flex-col h-[100vh] w-full p-[10px]">
+        <slot />
+    </body>
 </html>

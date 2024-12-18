@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from "astro:content";
+
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import utc from "dayjs/plugin/utc";
+
+import Layout from "layouts/PostLayout.astro";
+import Link from "components/Link.astro";
+import { parseDateFromFilePath } from "lib/parseDateFromFilePath";
+
+dayjs.extend(utc);
+dayjs.extend(advancedFormat);
+
+const { entry } = Astro.props;
+
+const { Content } = await render(entry);
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("blog");
+    return blogEntries
+        .filter((entry) => {
+            if (import.meta.env.DEV) return true;
+            return !entry.id.startsWith("_");
+        })
+        .map((entry) => {
+            const date = parseDateFromFilePath(entry.filePath!);
+
+            return {
+                params: { id: entry.id },
+                props: {
+                    entry: {
+                        ...entry,
+                        data: {
+                            ...entry.data,
+                            date,
+                        },
+                    },
+                },
+            };
+        });
+}
+---
+
+<Layout
+    id={entry.id}
+    title={entry.data.title}
+    description={entry.data.description}
+    tags={entry.data.tags}
+    date={entry.data.date}
+>
+    <div class="flex flex-row items-start justify-start w-full h-full">
+        <div
+            class="flex flex-col items-start justify-start w-[1110px] mt-[30px] h-full"
+        >
+            <div
+                class="flex flex-row items-start justify-start w-full mb-[70px]"
+            >
+                <h1 class="text-[168px] leading-none">
+                    {entry.data.title.toUpperCase()}
+                </h1>
+            </div>
+            <div
+                class="flex flex-row items-start justify-start w-full ml-[15px] mb-[140px]"
+            >
+                <div class="flex flex-col items-start justify-start mr-auto">
+                    <p class="text-[24px]">author: rayhanadev</p>
+                    <p class="text-[24px]">
+                        created: {
+                            dayjs(entry.data.date)
+                                .utc()
+                                .format("MMMM Do, YYYY")
+                                .toLowerCase()
+                        }
+                    </p>
+                    <p class="text-[24px]">commit: aadcee0d</p>
+                </div>
+                <div>
+                    <p class="text-2xl leading-9">
+                        <Link href="/thoughts">go back</Link>
+                    </p>
+                </div>
+            </div>
+            <div
+                class="flex flex-col items-start justify-start w-full prose ml-[15px] text-[24px]"
+            >
+                <Content />
+            </div>
+        </div>
+        <div>
+            <!-- Distortion Effect -->
+        </div>
+    </div>
+    <div class="mb-8"></div>
+</Layout>

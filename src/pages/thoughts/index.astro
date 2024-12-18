@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+import Layout from "layouts/Layout.astro";
+import NavBar from "components/NavBar.astro";
+import { parseDateFromFilePath } from "lib/parseDateFromFilePath";
+
+dayjs.extend(utc);
+
+const CHARS_PER_LINE = 38;
+
+const entries = await getCollection("blog").then((entries) =>
+    entries.map((entry) => {
+        const title = entry.data.title;
+
+        const date = parseDateFromFilePath(entry.filePath!);
+        const formattedDate = dayjs(date).utc().format("MM/DD/YYYY");
+
+        const dots = ".".repeat(
+            CHARS_PER_LINE - (title.length + formattedDate.length),
+        );
+
+        return {
+            url: `/thoughts/${entry.id}`,
+            content: `${title} ${dots} ${formattedDate}`,
+        };
+    }),
+);
+---
+
+<Layout
+    title="Ray Arayilakath - Software Engineer"
+    description="3+ years of experience growing engineering at YC-backed startups 🪴. researching tech justice at purdue university. building ethical and equitable software for the next 10 billion developers."
+>
+    <div
+        class="flex flex-col items-start justify-start h-full w-full overflow-y-clip"
+    >
+        <div
+            class="flex flex-row items-start justify-start w-full mt-[30px] mb-[172px]"
+        >
+            <div class="flex flex-col items-start justify-start mr-auto">
+                <h1 class="text-[168px] leading-none">THOUGHTS</h1>
+            </div>
+            <div class="mr-[25px]">
+                <NavBar />
+            </div>
+        </div>
+        <div
+            class="flex flex-col items-start justify-start mx-[25px] gap-[30px]"
+        >
+            {
+                entries.map((entry) => (
+                    <div class="flex flex-row items-start justify-start w-full">
+                        <p class="text-6xl">
+                            <a
+                                href={entry.url}
+                                class="hover:text-zinc-500 hover:cursor-pointer"
+                            >
+                                {entry.content}
+                            </a>
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Layout>

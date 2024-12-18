@@ -4,148 +4,152 @@ import { ClientRouter } from "astro:transitions";
 
 import { Head } from "astro-capo";
 import { SEO } from "astro-seo";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import advancedFormat from "dayjs/plugin/advancedFormat";
 
 import { JSONLD } from "lib/consts";
 
 import "styles/global.css";
 
-const { title, description, date, slug, og, twitter } = Astro.props;
-
-dayjs.extend(utc);
-dayjs.extend(advancedFormat);
+const { id, title, description, tags = [], date, og, twitter } = Astro.props;
 
 export interface Props {
-  title: string;
-  description: string;
-  date: Date | string;
-  slug: string;
-  og?: {
+    id: string;
     title: string;
     description: string;
-  };
-  twitter?: {
-    title: string;
-    description: string;
-  };
+    tags: string[];
+    date: Date | string;
+    og?: {
+        title: string;
+        description: string;
+    };
+    twitter?: {
+        title: string;
+        description: string;
+    };
 }
 ---
 
 <!doctype html>
 <html lang="en">
-  <Head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <Head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(JSONLD)}
-    />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(JSONLD)}
+        />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
 
-    <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111111" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111111" />
 
-    <meta name="msapplication-TileColor" content="#00aba9" />
-    <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
-    <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#00aba9" />
+        <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
+        <meta name="theme-color" content="#ffffff" />
 
-    <meta
-      name="robots"
-      content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
-    />
+        <meta
+            name="robots"
+            content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+        />
 
-    <SEO
-      title={`${title} | Ray Arayilakath`}
-      description={description}
-      canonical="https://www.rayhanadev.com"
-      openGraph={{
-        basic: {
-          type: "article",
-          title: og && og.title ? og.title : `${title} | Ray Arayilakath`,
-          image: `${import.meta.env.SITE}/open-graph/${slug}.png`,
-        },
-        optional: {
-          description: og && og.description ? og.description : description,
-          locale: "en-US",
-          siteName: "rayhanadev.com",
-        },
-        image: {
-          alt: `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
-          type: "image/png",
-        },
-        article: {
-          publishedTime: date.toString(),
-          modifiedTime: date.toString(),
-          authors: ["Rayhan Noufal Arayilakath"],
-          section: "Blog",
-          tags: ["rayhanadev", "ray arayilakath", "fullstack web developer"],
-        },
-      }}
-      twitter={{
-        title:
-          twitter && twitter.title
-            ? twitter.title
-            : `${title} | Ray Arayilakath`,
-        description:
-          twitter && twitter.description ? twitter.description : description,
-        image: `${import.meta.env.SITE}/open-graph/${slug}.png`,
-        imageAlt:
-          `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
-        card: "summary_large_image",
-        site: "@rayhanadev",
-        creator: "@rayhanadev",
-      }}
-    />
+        <SEO
+            title={`${title} | Ray Arayilakath`}
+            description={description}
+            canonical={import.meta.env.SITE}
+            openGraph={{
+                basic: {
+                    type: "article",
+                    title: og?.title ?? title,
+                    image: `${import.meta.env.SITE}/open-graph/${id}.png`,
+                },
+                optional: {
+                    description: og?.description ?? description,
+                    locale: "en-US",
+                    siteName: "rayhanadev.com",
+                },
+                image: {
+                    alt: `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
+                    type: "image/png",
+                },
+                article: {
+                    publishedTime: date.toString(),
+                    modifiedTime: date.toString(),
+                    authors: ["Rayhan Noufal Arayilakath"],
+                    section: "Blog",
+                    tags: [...tags],
+                },
+            }}
+            twitter={{
+                title: twitter?.title ?? title,
+                description: twitter?.description ?? description,
+                image: `${import.meta.env.SITE}/open-graph/${id}.png`,
+                imageAlt: `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
+                card: "summary_large_image",
+                site: "rayhanadev",
+                creator: "rayhanadev",
+            }}
+        />
 
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS"
-      href={`${import.meta.env.SITE}/feed.xml`}
-    />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS"
+            href={`${import.meta.env.SITE}/feed.xml`}
+        />
 
-    <meta name="author" content="Rayhan Noufal Arayilakath" />
-    <meta
-      name="keywords"
-      content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
-    />
+        <meta name="author" content="Rayhan Noufal Arayilakath" />
+        <meta
+            name="keywords"
+            content={`ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit, ${tags.join(", ")}`}
+        />
 
-    {import.meta.env.PROD && (
-      <script
-        async
-        is:inline
-        type="text/partytown"
-        src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
-      >
-      </script>
-      <script is:inline type="text/partytown">
-        import { PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID } from "astro:env/client";
+        {import.meta.env.PROD && (
+            <>
+            <script
+                async
+                is:inline
+                type="text/partytown"
+                src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
+            >
+            </script>
+            <script is:inline type="text/partytown">
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag("js", new Date());
+                gtag("config", PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID);
+            </script>
+            </>
+        )}
 
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID);
-      </script>
-    )}
-
-    <ClientRouter />
-  </Head>
-  <body class="flex flex-col min-h-[850px] pt-8 md:pt-16">
-
-  </body>
+        <ClientRouter />
+    </Head>
+    <body class="flex flex-col h-[100vh] w-full p-[10px]">
+        <slot />
+    </body>
 </html>

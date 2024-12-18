@@ -1,7 +1,77 @@
 ---
 import Layout from "layouts/Layout.astro";
+import NavBar from "components/NavBar.astro";
+import Link from "components/Link.astro";
 ---
 
-<Layout title="Hello!" description="Test">
-	<h1>Hello world!</h1>
+<Layout
+    title="Ray Arayilakath - Software Engineer"
+    description="3+ years of experience growing engineering at YC-backed startups 🪴. researching tech justice at purdue university. building ethical and equitable software for the next 10 billion developers."
+>
+    <div
+        class="flex flex-col items-start justify-start h-full w-full overflow-y-clip"
+    >
+        <div class="flex flex-row items-start justify-start mb-auto w-full">
+            <div class="mr-auto">
+                <!-- Insert Distortion Grid Here -->
+            </div>
+            <div
+                class="flex flex-col items-end justify-start max-w-[530px] mt-[30px] mr-[25px]"
+            >
+                <NavBar />
+                <div class="w-full mb-[50px]">
+                    <p class="text-justify text-2xl leading-9">
+                        3+ years of <Link href="/resume" seo={true}
+                            >experience</Link
+                        >
+                        growing engineering at YC-backed startups 🪴. researching
+                        tech justice at purdue university. building ethical and equitable
+                        software for the next 10 billion developers.
+                    </p>
+                </div>
+                <div class="flex flex-col items-end justify-start gap-2">
+                    <p class="text-2xl">
+                        <Link href="mailto:me@rayhanadev.com"
+                            >me@rayhanadev.com</Link
+                        >
+                    </p>
+                    <p class="text-2xl">
+                        <Link href="tel:817-470-7345">+1 (817) 470-7345</Link>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-row items-end justify-start w-full">
+            <div class="flex flex-col items-start justify-start mr-auto">
+                <p class="text-2xl leading-none ml-3">
+                    software engineer • technological humanist
+                </p>
+                <h1 class="text-[168px] leading-none">RAYHANADEV</h1>
+            </div>
+            <div
+                class="flex flex-col items-start justify-start gap-2 mb-[20px] mr-[25px]"
+            >
+                <p class="text-2xl">purdue hackers webring</p>
+                <div class="flex flex-row items-start justify-between w-full">
+                    <p class="text-2xl">
+                        <Link
+                            href="https://ringi.purduehackers.com/next?host=rayhanadev.com"
+                            >[next]</Link
+                        >
+                    </p>
+                    <p class="text-2xl">
+                        <Link
+                            href="https://ring.purduehackers.com/previous?host=rayhanadev.com"
+                            >[prev]</Link
+                        >
+                    </p>
+                    <p class="text-2xl">
+                        <Link href="https://ring.purduehackers.com/"
+                            >[main]</Link
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </Layout>

@@ -1,0 +1,30 @@
+<nav class="mb-[30px]">
+    <ul class="flex flex-row items-start justify-start gap-8">
+        <li>
+            <p
+                class:list={[
+                    "text-2xl",
+                    "text-zinc-500",
+                    Astro.url.pathname === "/" && "!text-black",
+                    Astro.url.pathname === "/" && "underline",
+                    Astro.url.pathname !== "/" && "hover:underline",
+                ]}
+            >
+                <a href="/">info</a>
+            </p>
+        </li>
+        <li>
+            <p
+                class:list={[
+                    "text-2xl",
+                    "text-zinc-500",
+                    Astro.url.pathname === "/thoughts" && "!text-black",
+                    Astro.url.pathname === "/thoughts" && "underline",
+                    Astro.url.pathname !== "/thoughts" && "hover:underline",
+                ]}
+            >
+                <a href="/thoughts">thoughts</a>
+            </p>
+        </li>
+    </ul>
+</nav>
