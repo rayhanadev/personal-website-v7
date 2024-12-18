@@ -11,31 +11,33 @@ const pages = Object.fromEntries(
     }),
 );
 
+// TODO(rayhanadev): replace this library with canvaskit (underlying library)
+// to support better rendering and more features.
+
 export const { getStaticPaths, GET } = OGImageRoute({
     param: "slug",
     pages,
     getImageOptions: (_path, page) => ({
         title: page.title,
         description: page.description,
-        logo: {
-            path: "./src/assets/logo.webp",
-            size: [250, 250],
+        // logo: {
+        //     path: "./src/assets/logo.webp",
+        //     size: [250, 250],
+        // },
+        bgImage: {
+            path: "./src/assets/og-image-background.png",
         },
-        bgGradient: [[255, 255, 255]],
-        border: {
-            color: [0, 0, 0],
-            width: 10,
-        },
-        padding: 50,
+        padding: 10,
         font: {
             title: {
                 color: [0, 0, 0],
                 families: ["SplineSansMono"],
-                weight: "Bold",
+                size: 142,
             },
             description: {
                 color: [0, 0, 0],
                 families: ["SplineSansMono"],
+                size: 24,
             },
         },
         fonts: [
