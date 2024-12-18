@@ -18,9 +18,10 @@
                 class:list={[
                     "text-2xl",
                     "text-zinc-500",
-                    Astro.url.pathname === "/thoughts" && "!text-black",
-                    Astro.url.pathname === "/thoughts" && "underline",
-                    Astro.url.pathname !== "/thoughts" && "hover:underline",
+                    Astro.url.pathname.startsWith("/thoughts") && "!text-black",
+                    Astro.url.pathname.startsWith("/thoughts") && "underline",
+                    !Astro.url.pathname.startsWith("/thoughts") &&
+                        "hover:underline",
                 ]}
             >
                 <a href="/thoughts">thoughts</a>
