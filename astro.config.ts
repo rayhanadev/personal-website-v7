@@ -11,7 +11,7 @@ import playformCompress from "@playform/compress";
 import { schema } from "./env.ts";
 
 export default defineConfig({
-    site: "https://www.rayhanadev.com",
+    site: "https://staging.rayhanadev.com",
     output: "static",
     integrations: [
         mdx(),
