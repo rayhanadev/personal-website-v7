@@ -2,6 +2,8 @@
 import Layout from "layouts/Layout.astro";
 import NavBar from "components/NavBar.astro";
 import Link from "components/Link.astro";
+
+const host = Astro.url.hostname;
 ---
 
 <Layout
@@ -55,13 +57,13 @@ import Link from "components/Link.astro";
                 <div class="flex flex-row items-start justify-between w-full">
                     <p class="text-2xl">
                         <Link
-                            href="https://ringi.purduehackers.com/next?host=rayhanadev.com"
+                            href={`https://ringi.purduehackers.com/next?host=${host}`}
                             >[next]</Link
                         >
                     </p>
                     <p class="text-2xl">
                         <Link
-                            href="https://ring.purduehackers.com/previous?host=rayhanadev.com"
+                            href={`https://ring.purduehackers.com/previous?host=${host}`}
                             >[prev]</Link
                         >
                     </p>
