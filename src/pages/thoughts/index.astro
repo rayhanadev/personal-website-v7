@@ -13,21 +13,23 @@ dayjs.extend(utc);
 const CHARS_PER_LINE = 38;
 
 const entries = await getCollection("blog").then((entries) =>
-    entries.map((entry) => {
-        const title = entry.data.title;
+    entries
+        .map((entry) => {
+            const title = entry.data.title;
 
-        const date = parseDateFromFilePath(entry.filePath!);
-        const formattedDate = dayjs(date).utc().format("MM/DD/YYYY");
+            const date = parseDateFromFilePath(entry.filePath!);
+            const formattedDate = dayjs(date).utc().format("MM/DD/YYYY");
 
-        const dots = ".".repeat(
-            CHARS_PER_LINE - (title.length + formattedDate.length),
-        );
+            const dots = ".".repeat(
+                CHARS_PER_LINE - (title.length + formattedDate.length),
+            );
 
-        return {
-            url: `/thoughts/${entry.id}`,
-            content: `${title} ${dots} ${formattedDate}`,
-        };
-    }),
+            return {
+                url: `/thoughts/${entry.id}`,
+                content: `${title} ${dots} ${formattedDate}`,
+            };
+        })
+        .reverse(),
 );
 ---
 
