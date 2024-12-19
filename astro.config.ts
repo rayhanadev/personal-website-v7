@@ -36,17 +36,8 @@ export default defineConfig({
         prefetchAll: true,
         defaultStrategy: "viewport",
     },
-    markdown: {
-        remarkPlugins: [
-            () => (_tree, file) => {
-                const filepath = file.history[0];
-                const result = execSync(
-                    `git log -1 --pretty="format:%cI" "${filepath}"`,
-                );
-                // @ts-ignore: added by astro but not exposed in the types
-                file.data.astro.frontmatter.lastModified = result.toString();
-            },
-        ],
+    redirects: {
+        "/t/[id]": "/thoughts/[id]",
     },
     env: { schema },
 });
