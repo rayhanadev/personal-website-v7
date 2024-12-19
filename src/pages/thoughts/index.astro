@@ -10,8 +10,6 @@ import { parseDateFromFilePath } from "lib/parseDateFromFilePath";
 
 dayjs.extend(utc);
 
-const CHARS_PER_LINE = 38;
-
 const entries = await getCollection("blog").then((entries) =>
     entries
         .map((entry) => {
@@ -20,13 +18,10 @@ const entries = await getCollection("blog").then((entries) =>
             const date = parseDateFromFilePath(entry.filePath!);
             const formattedDate = dayjs(date).utc().format("MM/DD/YYYY");
 
-            const dots = ".".repeat(
-                CHARS_PER_LINE - (title.length + formattedDate.length),
-            );
-
             return {
                 url: `/thoughts/${entry.id}`,
-                content: `${title} ${dots} ${formattedDate}`,
+                title: title,
+                date: formattedDate,
             };
         })
         .reverse(),
@@ -51,17 +46,19 @@ const entries = await getCollection("blog").then((entries) =>
             </div>
         </div>
         <div
-            class="flex flex-col items-start justify-start mx-[25px] gap-[30px]"
+            class="flex flex-col items-start justify-start mx-[25px] gap-[30px] w-[calc(100%-50px)]"
         >
             {
                 entries.map((entry) => (
                     <div class="flex flex-row items-start justify-start w-full">
-                        <p class="text-6xl">
+                        <p class="text-6xl w-full">
                             <a
                                 href={entry.url}
-                                class="hover:text-zinc-500 hover:cursor-pointer"
+                                class="hover:text-zinc-500 hover:cursor-pointer flex flex-row items-start justify-between gap-4 w-full"
                             >
-                                {entry.content}
+                                <span class="min-w-fit">{entry.title}</span>
+                                <span class="w-full dots" />
+                                <span class="min-w-fit">{entry.date}</span>
                             </a>
                         </p>
                     </div>
@@ -69,4 +66,20 @@ const entries = await getCollection("blog").then((entries) =>
             }
         </div>
     </div>
+
+    <style>
+        .dots {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .dots::before {
+            content: "................................................................................................................................................................................";
+            display: inline-block;
+            text-align: left;
+            letter-spacing: -0.1em;
+            overflow: hidden;
+        }
+    </style>
 </Layout>
