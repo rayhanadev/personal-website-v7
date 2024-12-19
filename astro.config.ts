@@ -1,5 +1,3 @@
-import { execSync } from "node:child_process";
-
 import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
