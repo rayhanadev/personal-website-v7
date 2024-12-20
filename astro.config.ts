@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import playformCompress from "@playform/compress";
@@ -26,6 +27,7 @@ export default defineConfig({
         playformCompress({
             Logger: 1,
         }),
+        react(),
     ],
     server: {
         port: 3000,
@@ -33,6 +35,9 @@ export default defineConfig({
     prefetch: {
         prefetchAll: true,
         defaultStrategy: "viewport",
+    },
+    markdown: {
+        syntaxHighlight: "prism",
     },
     redirects: {
         "/t/[id]": "/thoughts/[id]",

@@ -1,5 +1,17 @@
 import type { Config } from "tailwindcss";
 import { fontFamily as fonts } from "tailwindcss/defaultTheme";
+import type { PluginUtils } from "tailwindcss/types/config";
+
+// src: https://github.com/tailwindlabs/tailwindcss-typography/blob/383bee7004349a4877c619dafa9aff1854dac601/src/styles.js#L3-L17
+const round = (num: number) =>
+    num
+        .toFixed(7)
+        .replace(/(\.[0-9]+?)0+$/, "$1")
+        .replace(/\.0$/, "");
+const rem = (px: number) => `${round(px / 16)}rem`;
+const em = (px: number, base: number) => `${round(px / base)}em`;
+
+const BASE_FONT_SIZE = 24;
 
 const config = {
     darkMode: ["class"],
@@ -71,6 +83,81 @@ const config = {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
             },
+            typography: (theme: PluginUtils["theme"]) => ({
+                DEFAULT: {
+                    css: {
+                        fontSize: rem(BASE_FONT_SIZE),
+                        lineHeight: round(36 / BASE_FONT_SIZE),
+                        h1: {
+                            marginTop: rem(48),
+                            marginBottom: rem(8),
+                        },
+                        h2: {
+                            marginTop: rem(24),
+                            marginBottom: rem(8),
+                        },
+                        h3: {
+                            marginTop: rem(48),
+                            marginBottom: rem(8),
+                        },
+                        h4: {
+                            marginTop: rem(48),
+                            marginBottom: rem(8),
+                        },
+                        p: {
+                            marginTop: rem(8),
+                            marginBottom: rem(8),
+                        },
+                        a: {
+                            color: "inherit",
+                            fontWeight: "inherit",
+                            textDecoration: "underline",
+                            textDecorationColor: theme("colors.zinc.400"),
+                            "&:hover": {
+                                textDecorationColor: theme("colors.foreground"),
+                            },
+                        },
+                        ul: {
+                            marginTop: rem(8),
+                            marginBottom: rem(8),
+                        },
+                        ol: {
+                            marginTop: rem(8),
+                            marginBottom: rem(8),
+                        },
+                        li: {
+                            marginTop: rem(4),
+                            marginBottom: rem(4),
+                        },
+                        "ol > li": {
+                            paddingInlineStart: em(6, BASE_FONT_SIZE),
+                        },
+                        "ul > li": {
+                            paddingInlineStart: em(6, BASE_FONT_SIZE),
+                        },
+                        "> ul > li p": {
+                            marginTop: em(8, BASE_FONT_SIZE),
+                            marginBottom: em(8, BASE_FONT_SIZE),
+                        },
+                        "> ul > li > p:first-child": {
+                            marginTop: em(8, BASE_FONT_SIZE),
+                        },
+                        "> ul > li > p:last-child": {
+                            marginBottom: em(8, BASE_FONT_SIZE),
+                        },
+                        "> ol > li > p:first-child": {
+                            marginTop: em(8, BASE_FONT_SIZE),
+                        },
+                        "> ol > li > p:last-child": {
+                            marginBottom: em(8, BASE_FONT_SIZE),
+                        },
+                        "ul ul, ul ol, ol ul, ol ol": {
+                            marginTop: em(8, BASE_FONT_SIZE),
+                            marginBottom: em(8, BASE_FONT_SIZE),
+                        },
+                    },
+                },
+            }),
         },
     },
     plugins: [

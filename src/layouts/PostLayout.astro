@@ -127,25 +127,27 @@ export interface Props {
             content={`ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit, ${tags.join(", ")}`}
         />
 
-        {import.meta.env.PROD && (
-            <>
-            <script
-                async
-                is:inline
-                type="text/partytown"
-                src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
-            >
-            </script>
-            <script is:inline type="text/partytown">
-                window.dataLayer = window.dataLayer || [];
-                function gtag() {
-                    dataLayer.push(arguments);
-                }
-                gtag("js", new Date());
-                gtag("config", PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID);
-            </script>
-            </>
-        )}
+        {
+            import.meta.env.PROD && (
+                <script
+                    is:inline
+                    type="text/javascript"
+                    src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
+                />
+            )
+        }
+
+        {
+            import.meta.env.PROD && (
+                <script
+                    is:inline
+                    type="text/partytown"
+                    set:html={`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}');`}
+                />
+            )
+        }
+
+        <link href="/prism.css" rel="stylesheet" />
 
         <ClientRouter />
     </Head>
