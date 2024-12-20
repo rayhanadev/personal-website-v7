@@ -9,7 +9,7 @@
         "build": "astro build",
         "lint": "astro check",
         "lint:fix": "astro check --fix",
-        "format": "prettier --check */**/*.{js,json,ts,css,md,mdx,astro} --cache --cache-strategy metadata",
+        "format": "prettier --no-error-on-unmatched-pattern --check */**/*.{js,json,ts,css,md,mdx,astro} --cache --cache-strategy metadata",
         "format:fix": "prettier --write */**/*.{js,json,ts,css,md,mdx,astro} --cache --cache-strategy metadata",
         "prepare": "husky"
     },
