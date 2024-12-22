@@ -87,7 +87,7 @@ const config = {
                 DEFAULT: {
                     css: {
                         fontSize: rem(BASE_FONT_SIZE),
-                        lineHeight: round(36 / BASE_FONT_SIZE),
+                        lineHeight: round(42 / BASE_FONT_SIZE),
                         h1: {
                             marginTop: rem(48),
                             marginBottom: rem(8),
@@ -105,8 +105,8 @@ const config = {
                             marginBottom: rem(8),
                         },
                         p: {
-                            marginTop: rem(8),
-                            marginBottom: rem(8),
+                            marginTop: rem(20),
+                            marginBottom: rem(20),
                         },
                         a: {
                             color: "inherit",
