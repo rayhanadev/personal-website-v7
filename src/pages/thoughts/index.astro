@@ -6,7 +6,7 @@ import utc from "dayjs/plugin/utc";
 
 import Layout from "layouts/Layout.astro";
 import NavBar from "components/NavBar.astro";
-import { parseDateFromFilePath } from "lib/parseDateFromFilePath";
+import { parseDateFromFilePath, isDraft } from "lib/blog/utils";
 
 dayjs.extend(utc);
 
@@ -22,6 +22,7 @@ const entries = await getCollection("blog").then((entries) =>
                 url: `/thoughts/${entry.id}`,
                 title: title,
                 date: formattedDate,
+                isDraft: isDraft(entry.filePath!),
             };
         })
         .reverse(),
@@ -51,10 +52,19 @@ const entries = await getCollection("blog").then((entries) =>
             {
                 entries.map((entry) => (
                     <div class="flex flex-row items-start justify-start w-full">
-                        <p class="text-6xl w-full">
+                        <p
+                            class:list={[
+                                "text-6xl",
+                                "w-full",
+                                "hover:text-zinc-500",
+                                "hover:cursor-pointer",
+                                entry.isDraft && "text-red-500",
+                                entry.isDraft && "hover:text-red-400",
+                            ]}
+                        >
                             <a
                                 href={entry.url}
-                                class="hover:text-zinc-500 hover:cursor-pointer flex flex-row items-start justify-between gap-4 w-full"
+                                class="flex flex-row items-start justify-between gap-4 w-full"
                             >
                                 <span class="min-w-fit">{entry.title}</span>
                                 <span class="w-full dots" />

@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 
 import { BLOG_TITLE, BLOG_DESCRIPTION, EMAIL_ADDRESS } from "lib/consts";
-import { parseDateFromFilePath } from "lib/parseDateFromFilePath";
+import { parseDateFromFilePath } from "lib/blog/utils";
 
 export const GET: APIRoute = async () => {
     const blog = await getCollection("blog");
