@@ -1,9 +1,4 @@
 {
-    "src/content/blog/*.{md,mdx}": [
-        "bun run contents:encrypt",
-        "git add src/content/blog/*.gpg",
-        "bash -c 'git restore --staged src/content/blog/*.mdx'"
-    ],
     "*/**/*.{js,jsx,ts,tsx,astro}": ["astro check"],
     "*/**/*.{js,jsx,ts,tsx,json,css}": ["prettier --write"]
 }

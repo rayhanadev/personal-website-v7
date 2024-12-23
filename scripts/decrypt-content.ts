@@ -5,7 +5,7 @@ import { fdir } from "fdir";
 
 import { EMAIL_ADDRESS } from "lib/consts";
 
-const OUTPUT_DIR = path.resolve(process.cwd(), "./src/content/blog_encrypted");
+const OUTPUT_DIR = path.resolve(process.cwd(), "./src/content/blog");
 const CONTENT_DIR = path.resolve(process.cwd(), "./src/content/blog");
 
 try {
@@ -31,9 +31,6 @@ try {
     );
     process.exit(1);
 }
-
-await $`rm -rf ${CONTENT_DIR}`.quiet();
-await $`mkdir -p ${CONTENT_DIR}`.quiet();
 
 const api = new fdir().withFullPaths().glob("**/*.gpg");
 const files = await api.crawl(OUTPUT_DIR).withPromise();
