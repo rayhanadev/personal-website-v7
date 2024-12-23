@@ -1,11 +1,18 @@
-ENCRYPTED_POSTS=$(find src/content/blog/ -type f -name "*.gpg")
+if [ ! -f ".git/hooks/post-checkout-clone" ]; then
+    echo "First checkout after cloning. Running decryption..."
+    touch .git/hooks/post-checkout-clone
 
-if [ -z "$ENCRYPTED_POSTS" ]; then
-    echo "No encrypted posts found. Skipping decryption."
-    exit 0
+    # Run decryption script
+    ENCRYPTED_POSTS=$(find src/content/blog/ -type f -name "*.gpg")
+
+    if [ -z "$ENCRYPTED_POSTS" ]; then
+        echo "No encrypted posts found. Skipping decryption."
+        exit 0
+    fi
+
+    echo "Decrypting blog posts..."
+    bun contents:decrypt
+    echo "Decryption complete. Decrypted posts available locally."
+else
+    echo "Not a clone-related checkout. Skipping decryption."
 fi
-
-echo "Decrypting blog posts..."
-bun contents:decrypt
-
-echo "Decryption complete. Decrypted posts available locally."
