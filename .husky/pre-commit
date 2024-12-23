@@ -1,7 +1,7 @@
 bunx lint-staged
 
+# Get all staged .mdx files
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=d | grep "^src/content/blog/.*\.mdx$")
-
 
 if [ -z "$STAGED_FILES" ]; then
     echo "No staged .mdx files found. Skipping encryption."
@@ -9,12 +9,22 @@ if [ -z "$STAGED_FILES" ]; then
 fi
 
 echo "Encrypting staged .mdx files..."
+
+# Create a list of encrypted output files
+ENCRYPTED_FILES=()
+
+# Collect all staged files into a space-separated string for encryption
 for FILE in $STAGED_FILES; do
     OUTPUT_FILE="${FILE%.mdx}.mdx.gpg"
-    echo "Encrypting $FILE to $OUTPUT_FILE..."
-    bun run contents:encrypt "$FILE"
+    ENCRYPTED_FILES+=("$OUTPUT_FILE")
+done
 
-    # Step 3: Stage the encrypted file and unstage the plaintext file
+# Encrypt all files in one command
+bun run contents:encrypt $STAGED_FILES
+
+# Stage the encrypted files and unstage the plaintext files
+for FILE in $STAGED_FILES; do
+    OUTPUT_FILE="${FILE%.mdx}.mdx.gpg"
     git add "$OUTPUT_FILE"
     git restore --staged "$FILE"
 done
