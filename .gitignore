@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+src/content/blog/*
+!src/content/blog/*.md
+!src/content/blog/*.mdx

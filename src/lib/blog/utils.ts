@@ -1,11 +1,11 @@
 export function isDraft(slug: string) {
-    const file = slug.split("/")[4]!;
+    const file = slug.split("/")[3]!;
 
     return file.startsWith("_");
 }
 
 export function parseDateFromFilePath(slug: string) {
-    const [y, m, d] = slug.split("/")[4]!.split("-") as [
+    const [y, m, d] = slug.split("/")[3]!.split("-") as [
         string,
         string,
         string,

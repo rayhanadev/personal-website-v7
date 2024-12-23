@@ -1,0 +1,11 @@
+ENCRYPTED_POSTS=$(find src/content/blog_encrypted/ -type f -name "*.gpg")
+
+if [ -z "$ENCRYPTED_POSTS" ]; then
+    echo "No encrypted posts found. Skipping decryption."
+    exit 0
+fi
+
+echo "Decrypting blog posts..."
+bun contents:decrypt
+
+echo "Decryption complete. Decrypted posts available locally."
