@@ -38,11 +38,11 @@ await $`mkdir -p ${CONTENT_DIR}`.quiet();
 const api = new fdir().withFullPaths().glob("**/*.gpg");
 const files = await api.crawl(OUTPUT_DIR).withPromise();
 
-console.log(`Found ${files.length} files to decrypt.`);
-
 for (const file of files) {
     const output = file.replace(OUTPUT_DIR, CONTENT_DIR).replace(/\.gpg$/, ""); // Remove .gpg extension
 
-    console.log(`Decrypting ${file} to ${output}`);
+    console.log(
+        `Decrypting ${file.replace(process.cwd(), "")} to ${output.replace(process.cwd(), "")}`,
+    );
     await $`gpg --decrypt --output ${output} ${file}`.quiet();
 }

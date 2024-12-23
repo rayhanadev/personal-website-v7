@@ -35,6 +35,8 @@ export const BLOG_TITLE = "THOUGHTS: a blog written by Ray 🪴";
 export const BLOG_DESCRIPTION =
     "Various pieces written and composed by Ray, related to software engineering and life.";
 
+export const GPG_ENCRYPTION_SUBKEY =
+    "01B8 8479 18BA 65A0 D4C6  18CB 0479 18E3 6D57 A322";
 export const GPG_PUBLIC_KEY = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: F72C C561 7291 E088 C614  9ED2 5AF2 1C25 3DE4 2A3B
 Comment: Rayhan Noufal Arayilakath <me@rayhanadev.com>
