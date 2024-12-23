@@ -43,3 +43,5 @@ for (const file of files) {
     );
     await $`gpg --decrypt --output ${output} ${file}`.quiet();
 }
+
+await $`rm ${OUTPUT_DIR}/*.gpg`.quiet().nothrow();
