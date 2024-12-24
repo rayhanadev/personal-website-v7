@@ -12,8 +12,6 @@
         "lint:fix": "astro check --fix",
         "format": "prettier --no-error-on-unmatched-pattern --check */**/*.{js,json,ts,css,md,mdx,astro} --cache --cache-strategy metadata",
         "format:fix": "prettier --write */**/*.{js,json,ts,css,md,mdx,astro} --cache --cache-strategy metadata",
-        "contents:encrypt": "bun run scripts/encrypt-content.ts",
-        "contents:decrypt": "bun run scripts/decrypt-content.ts",
         "prepare": "husky"
     },
     "dependencies": {
