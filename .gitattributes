@@ -1,1 +1,1 @@
-src/content/blog/*.mdx filter=git-crypt diff=git-crypt
+src/content/blog/posts/*.mdx filter=git-crypt diff=git-crypt
