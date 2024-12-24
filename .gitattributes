@@ -1,0 +1,1 @@
+src/content/blog/*.mdx filter=git-crypt diff=git-crypt
