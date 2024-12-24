@@ -1,3 +1,5 @@
+import path from "node:path";
+
 export const NICKNAME = "Ray";
 export const FULL_NAME = "Rayhan Noufal Arayilakath";
 export const ALIAS = "rayhanadev";
@@ -151,3 +153,8 @@ RA==
 -----END PGP PUBLIC KEY BLOCK-----`;
 export const SSH_PUBLIC_KEY =
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFbtAqPlddx1IItiYbD1fZcztRw/v4vOLC9IKZfXcbqiAskitIK3XkM3N8gOEFwF7CtrTboB+RIZI72X/Es56bY5QtNLeTc6ENjW1g7v8xHf9hR+JqY1W3H/6/6v4CTVvQzrnqbmbzbBOQTdyOkHK7SrxDbaHlUu8jLQXEyFN7NYfH3QgGJcRpbEWzTmbjVT4ZyEyv2JVkv8OEPb6DCWXD8hn5+/54TdyXW79hoS8SZ4qT2J1lGPYtYE7gZO7vR+eKu7/mkfw5vQ8WghPZCmdnnFJWyhp8rQXTH/qeCZF0U2DG1OCaMeo5LrafmFjsgMAoc26BtN1uUa863MpUfHH9I+DoP5B4ImN1B39JS09rOGnBe9xMWpg2JQariILJjhT0rJgQOq2UpNBhQQd/FDCxZQcz0gDLM1sze4A6kTlzuxXmnjBSDzrzXDkuT8PgPapPRFMC/ffwr6czsgXCbiTZfoochU/NjjN6GrVBs0uvDvyqsAYV1/XMH9osK/FEt5RIlHYNvACCT7TX/vysZgCXfWN60OiQXnfvtzn+JY26sJqT5ZDj9KHIfgYE5SZiJIVFRNfv97IVqsM1HkgD/6fPJOo9gbljuj9Rxe0en70exQi7Iu2y19hGGkE9UJBHOCEejiLatuh7kKQFQQLvWXnUL9qNVylGJKKlAKpa+XnsJQ==";
+
+export const BLOG_CONTENT_POOL_PATH = path.resolve(
+    process.cwd(),
+    "./src/content/blog/posts",
+);
