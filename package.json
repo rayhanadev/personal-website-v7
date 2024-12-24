@@ -6,6 +6,7 @@
     "scripts": {
         "start": "astro dev",
         "dev": "astro dev",
+        "deploy": "wrangler pages deploy dist --project-name personal-website-v7 --branch production",
         "build": "astro build",
         "lint": "astro check",
         "lint:fix": "astro check --fix",
@@ -50,6 +51,7 @@
         "prettier": "^3.4.2",
         "prettier-plugin-astro": "^0.14.1",
         "react-compiler-runtime": "^19.0.0-beta-201e55d-20241215",
-        "typescript": "^5.7.2"
+        "typescript": "^5.7.2",
+        "wrangler": "^3.99.0"
     }
 }

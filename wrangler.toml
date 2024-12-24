@@ -1,0 +1,3 @@
+name = "personal-website-v7"
+pages_build_output_dir = "./dist"
+send_metrics = false
