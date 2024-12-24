@@ -1,7 +1,7 @@
 bunx lint-staged
 
 # Get all staged .mdx files
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=d | grep "^src/content/blog/.*\.mdx$")
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=d | grep "^src/content/blog/.*\.mdx$" || true)
 
 if [ -z "$STAGED_FILES" ]; then
     echo "No staged .mdx files found. Skipping encryption."
