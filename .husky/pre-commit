@@ -10,24 +10,16 @@ fi
 
 echo "Encrypting staged .mdx files..."
 
-# Create a list of encrypted output files
-ENCRYPTED_FILES=()
-
-# Collect all staged files into a space-separated string for encryption
-for FILE in $STAGED_FILES; do
-    OUTPUT_FILE="${FILE%.mdx}.mdx.gpg"
-    ENCRYPTED_FILES+=("$OUTPUT_FILE")
-done
-
 # Encrypt all files in one command
 bun run contents:encrypt $STAGED_FILES
 
 # Stage the encrypted files and unstage the plaintext files
-for FILE in $STAGED_FILES; do
-    OUTPUT_FILE="${FILE%.mdx}.mdx.gpg"
+while IFS= read -r FILE; do
+    BASENAME=${FILE##*/}
+    OUTPUT_FILE="src/content/blog/artifacts/${BASENAME}.gpg"
     git add "$OUTPUT_FILE"
     git restore --staged "$FILE"
-done
+done <<< "$STAGED_FILES"
 
 echo "Encryption complete. Staged encrypted files."
 

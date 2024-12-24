@@ -3,7 +3,7 @@ if [ ! -f ".git/hooks/post-checkout-clone" ]; then
     touch .git/hooks/post-checkout-clone
 
     # Run decryption script
-    ENCRYPTED_POSTS=$(find src/content/blog/ -type f -name "*.gpg")
+    ENCRYPTED_POSTS=$(find src/content/blog/artifacts/ -type f -name "*.gpg")
 
     if [ -z "$ENCRYPTED_POSTS" ]; then
         echo "No encrypted posts found. Skipping decryption."

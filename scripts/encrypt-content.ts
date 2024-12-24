@@ -19,16 +19,18 @@ try {
     process.exit(1);
 }
 
-const CONTENT_DIR = path.resolve(process.cwd(), "./src/content/blog");
-const OUTPUT_DIR = path.resolve(process.cwd(), "./src/content/blog");
+const CONTENT_DIR = "src/content/blog";
+const OUTPUT_DIR = path.resolve(process.cwd(), "./src/content/blog/artifacts");
 
-await $`rm ${OUTPUT_DIR}/*.gpg`.quiet().nothrow();
+await $`rm -rf ${OUTPUT_DIR}`.quiet().nothrow();
+await $`mkdir -p ${OUTPUT_DIR}`.quiet();
 
 const files = process.argv.slice(2);
 
 console.log(`Found ${files.length} files to encrypt.`);
 
 for (const file of files) {
+    console.log(file, CONTENT_DIR, OUTPUT_DIR);
     const output = `${file.replace(CONTENT_DIR, OUTPUT_DIR)}.gpg`;
 
     console.log(

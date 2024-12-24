@@ -24,5 +24,4 @@ pnpm-debug.log*
 .idea/
 
 src/content/blog/*
-!src/content/blog/*.mdx
-!src/content/blog/*.mdx.gpg
+!src/content/blog/artifacts/
