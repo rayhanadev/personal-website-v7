@@ -22,7 +22,6 @@ try {
 const CONTENT_DIR = "src/content/blog";
 const OUTPUT_DIR = path.resolve(process.cwd(), "./src/content/blog/artifacts");
 
-await $`rm -rf ${OUTPUT_DIR}`.quiet().nothrow();
 await $`mkdir -p ${OUTPUT_DIR}`.quiet();
 
 const files = process.argv.slice(2);
