@@ -1,16 +1,16 @@
 ---
-const { href, seo = false, ...props } = Astro.props;
+const { href, external = false, ...props } = Astro.props;
 
 export interface Props {
     href: string;
-    seo?: boolean;
+    external?: boolean;
     [key: string]: unknown;
 }
 ---
 
 <a
     href={href}
-    {...seo ? { rel: "noopener", target: "_blank" } : {}}
+    {...external ? { rel: "noopener", target: "_blank" } : {}}
     class:list={[
         "underline",
         "decoration-zinc-400",
