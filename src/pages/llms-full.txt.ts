@@ -94,7 +94,11 @@ committed to making a meaningful impact on the future of tech and society.
 
 For inquiries or collaboration opportunities, connect with him at rayhan@purdue.edu or via LinkedIn.
 
-${entries.map(({ body }) => `${body}\n\n`)}
+## Blog Posts
+
+${entries.map(({ body }) => {
+    return `==========\n${body}\n==========\n\n`;
+})}
 `.trim();
 
 export const GET: APIRoute = () => {
