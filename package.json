@@ -6,7 +6,7 @@
     "scripts": {
         "start": "astro dev",
         "dev": "astro dev",
-        "deploy": "wrangler pages deploy dist --project-name personal-website-v7 --branch production",
+        "deploy": "wrangler pages deploy dist --project-name personal-website-v7 --branch main",
         "build": "astro build",
         "lint": "astro check",
         "lint:fix": "astro check --fix",
