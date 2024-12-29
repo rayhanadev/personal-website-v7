@@ -51,23 +51,25 @@ export async function getStaticPaths() {
     tags={entry.data.tags}
     date={entry.data.date}
 >
-    <div class="flex flex-row items-start justify-start w-full h-full">
+    <div class="flex flex-row items-start justify-start w-full">
         <div
-            class="flex flex-col items-start justify-start w-[1110px] mt-[30px] h-full"
+            class="flex flex-col items-start justify-start w-full md:w-[1110px] mt-[20px] md:mt-[30px]"
         >
             <div
-                class="flex flex-row items-start justify-start w-full mb-[70px]"
+                class="flex flex-row items-start justify-start w-full mb-[25px] md:mb-[70px]"
             >
-                <h1 class="text-[168px] leading-none">
+                <h1
+                    class="text-[64px] md:text-[168px] leading-none w-full text-wrap"
+                >
                     {entry.data.title.toUpperCase()}
                 </h1>
             </div>
             <div
-                class="flex flex-row items-start justify-start w-full ml-[15px] mb-[140px]"
+                class="flex flex-col-reverse md:flex-row items-start justify-start w-full md:ml-[15px] mb-[80px] md:mb-[140px]"
             >
                 <div class="flex flex-col items-start justify-start mr-auto">
-                    <p class="text-[24px]">author: rayhanadev</p>
-                    <p class="text-[24px]">
+                    <p class="text-lg md:text-[24px]">author: rayhanadev</p>
+                    <p class="text-lg md:text-[24px]">
                         created: {
                             dayjs(entry.data.date)
                                 .utc()
@@ -75,16 +77,16 @@ export async function getStaticPaths() {
                                 .toLowerCase()
                         }
                     </p>
-                    <p class="text-[24px]">commit: aadcee0d</p>
+                    <p class="text-lg md:text-[24px]">commit: aadcee0d</p>
                 </div>
                 <div>
-                    <p class="text-2xl leading-9">
+                    <p class="text-lg md:text-2xl leading-9 hidden">
                         <Link href="/thoughts">go back</Link>
                     </p>
                 </div>
             </div>
             <div
-                class="flex flex-col items-sta rt justify-start w-full prose prose-zinc ml-[15px] text-[24px]"
+                class="flex flex-col items-start justify-start w-full prose-sm md:prose prose-zinc md:ml-[15px] text-lg md:text-[24px]"
             >
                 <Content />
                 <div class="pb-16"></div>

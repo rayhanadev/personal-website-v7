@@ -13,16 +13,20 @@ const host = Astro.url.hostname;
     <div
         class="flex flex-col items-start justify-start h-full w-full overflow-y-clip"
     >
-        <div class="flex flex-row items-start justify-start mb-auto w-full">
-            <div class="mr-auto">
+        <div
+            class="flex flex-row items-start justify-start mt-[20px] md:mt-0 mb-auto w-full"
+        >
+            <div class="w-0 md:w-auto md:mr-auto">
                 <!-- Insert Distortion Grid Here -->
             </div>
             <div
-                class="flex flex-col items-end justify-start max-w-[530px] mt-[30px] mr-[25px]"
+                class="flex flex-col items-start md:items-end justify-start w-full md:max-w-[530px] md:mt-[30px] md:mr-[25px]"
             >
                 <NavBar />
                 <div class="w-full mb-[50px]">
-                    <p class="text-justify text-2xl leading-9">
+                    <p
+                        class="text-left md:text-justify text-xl md:text-2xl leading-8 md:leading-9"
+                    >
                         3+ years of <Link href="/resume">experience</Link>
                         growing engineering at YC-backed startups 🪴. researching
                         tech justice at purdue university. building ethical and equitable
@@ -30,42 +34,47 @@ const host = Astro.url.hostname;
                     </p>
                 </div>
                 <div class="flex flex-col items-end justify-start gap-2">
-                    <p class="text-2xl">
+                    <p class="text-xl md:text-2xl">
                         <Link href="mailto:me@rayhanadev.com"
                             >me@rayhanadev.com</Link
                         >
                     </p>
-                    <p class="text-2xl">
+                    <p class="text-xl md:text-2xl">
                         <Link href="tel:817-470-7345">+1 (817) 470-7345</Link>
                     </p>
                 </div>
             </div>
         </div>
-        <div class="flex flex-row items-end justify-start w-full">
+        <div class="flex flex-col md:flex-row items-end justify-start w-full">
             <div class="flex flex-col items-start justify-start mr-auto">
-                <p class="text-2xl leading-none ml-3">
-                    software engineer • technological humanist
+                <p class="hidden md:block text-2xl leading-none ml-3">
+                    software engineer • technological humanist
                 </p>
-                <h1 class="text-[168px] leading-none">RAYHANADEV</h1>
+                <h1 class="text-[64px] md:text-[168px] leading-none -ml-[6px]">
+                    RAYHANADEV
+                </h1>
             </div>
             <div
-                class="flex flex-col items-start justify-start gap-2 mb-[20px] mr-[25px]"
+                class="flex flex-row md:flex-col items-center md:items-start justify-start gap-2 md:block md:mb-[20px] md:mr-[25px] w-full md:w-auto"
             >
-                <p class="text-2xl">purdue hackers webring</p>
-                <div class="flex flex-row items-start justify-between w-full">
-                    <p class="text-2xl">
+                <p class="hidden md:block text-2xl">purdue hackers webring</p>
+                <p class="block md:hidden text-xl mr-auto">phack:</p>
+                <div
+                    class="flex flex-row items-start justify-between w-fit md:w-full"
+                >
+                    <p class="text-xl md:text-2xl">
                         <Link
-                            href={`https://ringi.purduehackers.com/next?host=${host}`}
+                            href={`https://ring.purduehackers.com/next?host=${host}`}
                             >[next]</Link
                         >
                     </p>
-                    <p class="text-2xl">
+                    <p class="text-xl md:text-2xl">
                         <Link
                             href={`https://ring.purduehackers.com/previous?host=${host}`}
                             >[prev]</Link
                         >
                     </p>
-                    <p class="text-2xl">
+                    <p class="text-xl md:text-2xl">
                         <Link href="https://ring.purduehackers.com/"
                             >[main]</Link
                         >
