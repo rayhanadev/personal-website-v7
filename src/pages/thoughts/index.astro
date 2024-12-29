@@ -37,10 +37,10 @@ const entries = await getCollection("blog").then((entries) =>
         class="flex flex-col items-start justify-start h-full w-full overflow-y-clip"
     >
         <div
-            class="flex flex-col-reverse md:flex-row items-start justify-start w-full mt-[20px] md:mt-[30px] mb-[110px] md:mb-[172px]"
+            class="flex flex-col-reverse lg:flex-row items-start justify-start w-full mt-[20px] lg:mt-[30px] mb-[110px] lg:mb-[172px]"
         >
             <div class="flex flex-col items-start justify-start mr-auto">
-                <h1 class="text-[64px] md:text-[168px] leading-none">
+                <h1 class="text-[64px] lg:text-[168px] leading-none">
                     THOUGHTS
                 </h1>
             </div>
@@ -49,7 +49,7 @@ const entries = await getCollection("blog").then((entries) =>
             </div>
         </div>
         <div
-            class="flex flex-col items-start justify-start md:gap-[30px] w-full md:w-[calc(100%-50px)]"
+            class="flex flex-col items-start justify-start lg:gap-[30px] w-full lg:w-[calc(100%-50px)]"
         >
             {
                 entries.map((entry) => (
@@ -57,7 +57,7 @@ const entries = await getCollection("blog").then((entries) =>
                         <p
                             class:list={[
                                 "text-[40px]",
-                                "md:text-6xl",
+                                "lg:text-6xl",
                                 "w-full",
                                 "hover:text-zinc-500",
                                 "hover:cursor-pointer",
@@ -69,11 +69,11 @@ const entries = await getCollection("blog").then((entries) =>
                                 href={entry.url}
                                 class="flex flex-row items-start justify-between gap-4 w-full"
                             >
-                                <span class="w-full md:min-w-fit">
+                                <span class="w-full lg:min-w-fit">
                                     {entry.title}
                                 </span>
-                                <span class="hidden md:block w-0 md:w-full dots" />
-                                <span class="hidden md:block min-w-fit">
+                                <span class="hidden lg:block w-0 lg:w-full dots" />
+                                <span class="hidden lg:block min-w-fit">
                                     {entry.date}
                                 </span>
                             </a>
