@@ -27,7 +27,7 @@ const config = {
         },
         extend: {
             fontFamily: {
-                sans: ["SplineSansMono", ...fonts.sans],
+                sans: ["SplineSansMono", ...fonts.mono],
             },
             colors: {
                 border: "hsl(var(--border))",
