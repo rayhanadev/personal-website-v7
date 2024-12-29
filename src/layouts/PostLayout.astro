@@ -53,6 +53,7 @@ export interface Props {
             sizes="32x32"
             href="/favicon-32x32.png"
         />
+
         <link
             rel="icon"
             type="image/png"
@@ -61,13 +62,6 @@ export interface Props {
         />
 
         <link rel="manifest" href="/manifest.json" />
-
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111111" />
-
-        <meta name="msapplication-TileColor" content="#00aba9" />
-        <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
         <meta name="theme-color" content="#ffffff" />
 
         <meta
@@ -122,10 +116,7 @@ export interface Props {
         />
 
         <meta name="author" content="Rayhan Noufal Arayilakath" />
-        <meta
-            name="keywords"
-            content={`ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit, ${tags.join(", ")}`}
-        />
+        <meta name="keywords" content={tags.join(", ")} />
 
         {
             import.meta.env.PROD && (
