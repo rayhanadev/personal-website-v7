@@ -6,8 +6,10 @@
     "scripts": {
         "start": "astro dev",
         "dev": "astro dev",
-        "deploy": "wrangler pages deploy dist --project-name personal-website-v7 --branch main",
-        "build": "astro build",
+        "deploy:prod": "wrangler pages deploy dist --project-name personal-website-v7 --branch production",
+        "deploy:staging": "wrangler pages deploy dist --project-name personal-website-v7 --branch preview",
+        "build:prod": "astro build --mode production",
+        "build:staging": "astro build --mode staging",
         "lint": "astro check",
         "lint:fix": "astro check --fix",
         "format": "prettier --no-error-on-unmatched-pattern --check */**/*.{js,json,ts,css,md,mdx,astro} --cache --cache-strategy metadata",
