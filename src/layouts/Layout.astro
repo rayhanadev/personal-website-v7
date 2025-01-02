@@ -117,9 +117,10 @@ export interface Props {
                 <script
                     defer
                     is:inline
-                    src="https://cloud.umami.is/script.js"
+                    src="/script.js"
                     type="text/partytown"
                     data-website-id={PUBLIC_UMAMI_WEBSITE_ID}
+                    data-host-url={import.meta.env.SITE}
                 />
             )
         }
