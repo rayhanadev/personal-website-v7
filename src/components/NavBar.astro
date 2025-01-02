@@ -1,3 +1,8 @@
+---
+import { NAVIGATION } from "lib/consts";
+const [home, ...links] = NAVIGATION;
+---
+
 <nav class="mb-[30px]">
     <ul class="flex flex-row items-start justify-start gap-8">
         <li>
@@ -5,27 +10,32 @@
                 class:list={[
                     "text-2xl",
                     "text-zinc-500",
-                    Astro.url.pathname === "/" && "!text-black",
-                    Astro.url.pathname === "/" && "underline",
-                    Astro.url.pathname !== "/" && "hover:underline",
+                    Astro.url.pathname === home!.href && "!text-black",
+                    Astro.url.pathname === home!.href && "underline",
+                    Astro.url.pathname !== home!.href && "hover:underline",
                 ]}
             >
-                <a href="/">info</a>
+                <a href={home!.href}>{home!.name}</a>
             </p>
         </li>
-        <li>
-            <p
-                class:list={[
-                    "text-2xl",
-                    "text-zinc-500",
-                    Astro.url.pathname.startsWith("/thoughts") && "!text-black",
-                    Astro.url.pathname.startsWith("/thoughts") && "underline",
-                    !Astro.url.pathname.startsWith("/thoughts") &&
-                        "hover:underline",
-                ]}
-            >
-                <a href="/thoughts">thoughts</a>
-            </p>
-        </li>
+        {
+            links.map(({ name, href }) => (
+                <li>
+                    <p
+                        class:list={[
+                            "text-2xl",
+                            "text-zinc-500",
+                            Astro.url.pathname.startsWith(href) &&
+                                "!text-black",
+                            Astro.url.pathname.startsWith(href) && "underline",
+                            !Astro.url.pathname.startsWith(href) &&
+                                "hover:underline",
+                        ]}
+                    >
+                        <a href={href}>{name}</a>
+                    </p>
+                </li>
+            ))
+        }
     </ul>
 </nav>

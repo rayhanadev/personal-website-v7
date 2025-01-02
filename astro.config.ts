@@ -40,6 +40,7 @@ export default defineConfig({
         syntaxHighlight: "prism",
     },
     redirects: {
+        "/work": "/resume",
         "/t/[id]": "/thoughts/[id]",
     },
     env: { schema },

@@ -33,6 +33,12 @@ export const JSONLD = {
     birthDate: "2006-06-24",
 };
 
+export const NAVIGATION = [
+    { name: "info", href: "/" },
+    { name: "thoughts", href: "/thoughts" },
+    { name: "work", href: "/resume" },
+];
+
 export const BLOG_TITLE = "THOUGHTS: a blog written by Ray 🪴";
 export const BLOG_DESCRIPTION =
     "Various pieces written and composed by Ray, related to software engineering and life.";
