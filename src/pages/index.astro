@@ -94,6 +94,8 @@ const host = Astro.url.hostname;
 
 <style>
     .scrollbar-override {
-        scrollbar-gutter: stable both-edges;
+        @media (min-width: 1024px) {
+            scrollbar-gutter: stable both-edges;
+        }
     }
 </style>
