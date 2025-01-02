@@ -72,7 +72,7 @@ const entries = await getCollection("blog").then((entries) =>
                                 <span class="w-full lg:min-w-fit lg:w-auto">
                                     {entry.title}
                                 </span>
-                                <span class="hidden lg:block w-0 lg:w-full dots" />
+                                <span class="hidden w-0 lg:w-full lg:inline-block lg:whitespace-nowrap lg:overflow-hidden dots" />
                                 <span class="hidden lg:block min-w-fit">
                                     {entry.date}
                                 </span>
@@ -83,28 +83,17 @@ const entries = await getCollection("blog").then((entries) =>
             }
         </div>
     </div>
-
-    <style>
-        .dots {
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .dots::before {
-            content: "................................................................................................................................................................................";
-            display: inline-block;
-            text-align: left;
-            letter-spacing: -0.2em;
-            overflow: hidden;
-        }
-    </style>
 </Layout>
 
-<style>
-    .scrollbar-override {
-        @media (min-width: 1024px) {
-            scrollbar-gutter: stable;
-        }
+<style is:inline>
+    .dots {
+    }
+
+    .dots::before {
+        content: "................................................................................................................................................................................";
+        display: inline-block;
+        text-align: left;
+        letter-spacing: -0.1em;
+        overflow: hidden !important;
     }
 </style>

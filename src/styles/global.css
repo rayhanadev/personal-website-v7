@@ -84,6 +84,12 @@
         background-color: rgba(0, 0, 0, 0.2);
     }
 
+    .scrollbar-override {
+        @media (min-width: 1024px) {
+            scrollbar-gutter: stable;
+        }
+    }
+
     @font-face {
         font-family: "SplineSansMono";
         src: url("/fonts/SplineSansMono-VariableFont_wght.woff2")
