@@ -49,7 +49,7 @@ const entries = await getCollection("blog").then((entries) =>
             </div>
         </div>
         <div
-            class="flex flex-col items-start justify-start lg:gap-[30px] w-full lg:w-[calc(100%-50px)] lg:mx-auto"
+            class="flex flex-col items-start justify-start lg:gap-[30px] lg:w-[calc(100%-50px)] lg:mx-auto w-full"
         >
             {
                 entries.map((entry) => (
@@ -104,7 +104,7 @@ const entries = await getCollection("blog").then((entries) =>
 <style>
     .scrollbar-override {
         @media (min-width: 1024px) {
-            scrollbar-gutter: stable both-edges;
+            scrollbar-gutter: stable;
         }
     }
 </style>
