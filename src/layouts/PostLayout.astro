@@ -1,5 +1,5 @@
 ---
-import { PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID } from "astro:env/client";
+import { PUBLIC_UMAMI_WEBSITE_ID } from "astro:env/client";
 import { ClientRouter } from "astro:transitions";
 
 import { Head } from "astro-capo";
@@ -121,19 +121,11 @@ export interface Props {
         {
             import.meta.env.PROD && (
                 <script
+                    defer
                     is:inline
-                    type="text/javascript"
-                    src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
-                />
-            )
-        }
-
-        {
-            import.meta.env.PROD && (
-                <script
-                    is:inline
+                    src="https://cloud.umami.is/script.js"
                     type="text/partytown"
-                    set:html={`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}');`}
+                    data-website-id={PUBLIC_UMAMI_WEBSITE_ID}
                 />
             )
         }

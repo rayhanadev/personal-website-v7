@@ -35,12 +35,17 @@ const host = Astro.url.hostname;
                 </div>
                 <div class="flex flex-col items-end justify-start gap-2">
                     <p class="text-xl lg:text-2xl">
-                        <Link href="mailto:me@rayhanadev.com"
+                        <Link
+                            umami={{ event: "homepage_email_click" }}
+                            href="mailto:me@rayhanadev.com"
                             >me@rayhanadev.com</Link
                         >
                     </p>
                     <p class="text-xl lg:text-2xl">
-                        <Link href="tel:817-470-7345">+1 (817) 470-7345</Link>
+                        <Link
+                            umami={{ event: "homepage_phone_click" }}
+                            href="tel:817-470-7345">+1 (817) 470-7345</Link
+                        >
                     </p>
                 </div>
             </div>
@@ -67,17 +72,17 @@ const host = Astro.url.hostname;
                     <p class="text-xl lg:text-2xl">
                         <Link
                             href={`https://ring.purduehackers.com/next?host=${host}`}
-                            >[next]</Link
+                            external>[next]</Link
                         >
                     </p>
                     <p class="text-xl lg:text-2xl">
                         <Link
                             href={`https://ring.purduehackers.com/previous?host=${host}`}
-                            >[prev]</Link
+                            external>[prev]</Link
                         >
                     </p>
                     <p class="text-xl lg:text-2xl">
-                        <Link href="https://ring.purduehackers.com/"
+                        <Link href="https://ring.purduehackers.com/" external
                             >[main]</Link
                         >
                     </p>
