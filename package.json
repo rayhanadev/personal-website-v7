@@ -52,6 +52,7 @@
         "prettier": "^3.4.2",
         "prettier-plugin-astro": "^0.14.1",
         "react-compiler-runtime": "^19.0.0-beta-b2e8e9c-20241220",
+        "sharp": "^0.33.5",
         "typescript": "^5.7.2",
         "unified": "^11.0.5",
         "vite": "^6.0.7",
