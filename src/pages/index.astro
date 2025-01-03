@@ -3,7 +3,7 @@ import Layout from "layouts/Layout.astro";
 import NavBar from "components/NavBar.astro";
 import Link from "components/Link.astro";
 
-const host = Astro.url.hostname;
+const host = new URL(import.meta.env.SITE).hostname;
 ---
 
 <Layout
