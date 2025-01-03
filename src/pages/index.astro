@@ -3,6 +3,9 @@ import Layout from "layouts/Layout.astro";
 import NavBar from "components/NavBar.astro";
 import Link from "components/Link.astro";
 import WebringLink from "components/WebringLink.astro";
+
+import { Image } from "astro:assets";
+import heroNoiseGrid from "../assets/hero-noise-grid.webp";
 ---
 
 <Layout
@@ -16,7 +19,11 @@ import WebringLink from "components/WebringLink.astro";
             class="flex flex-row items-start justify-start mt-[20px] lg:mt-0 mb-auto w-full"
         >
             <div class="w-0 lg:w-auto lg:mr-auto">
-                <!-- Insert Distortion Grid Here -->
+                <Image
+                    src={heroNoiseGrid}
+                    alt="A grid of dots that have been distorted into a wave-like pattern."
+                    class="hidden lg:block absolute top-0 left-0 z-[-1] w-[50%] lg:w-[55%]"
+                />
             </div>
             <div
                 class="flex flex-col items-start lg:items-end justify-start w-full lg:max-w-[530px] lg:mt-[30px] lg:mr-[25px]"
