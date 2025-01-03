@@ -1,4 +1,4 @@
-import { BLOG_CONTENT_POOL_PATH } from "lib/consts";
+import { BLOG_CONTENT_POOL_PATH } from "../consts";
 
 const relativePath = BLOG_CONTENT_POOL_PATH.replace(process.cwd(), "").slice(1);
 

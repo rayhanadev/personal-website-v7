@@ -14,7 +14,7 @@ dayjs.extend(advancedFormat);
 
 const { entry } = Astro.props;
 
-const { Content } = await render(entry);
+const { Content, remarkPluginFrontmatter } = await render(entry);
 
 export const prerender = true;
 
@@ -77,7 +77,9 @@ export async function getStaticPaths() {
                                 .toLowerCase()
                         }
                     </p>
-                    <p class="text-lg lg:text-[24px]">commit: aadcee0d</p>
+                    <p class="text-lg lg:text-[24px]">
+                        commit: {remarkPluginFrontmatter.commit}
+                    </p>
                 </div>
                 <div>
                     <p class="text-lg lg:text-2xl leading-9 hidden lg:block">

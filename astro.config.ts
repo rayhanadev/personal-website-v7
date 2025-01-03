@@ -9,10 +9,9 @@ import tailwind from "@astrojs/tailwind";
 import playformCompress from "@playform/compress";
 
 import { schema } from "./env.ts";
+import { gitCommitRemarkPlugin } from "./src/lib/blog/gitCommitRemarkPlugin.ts";
 
 const { SITE } = loadEnv(process.env.NODE_ENV!, process.cwd(), "");
-
-console.log("SITE", SITE);
 
 export default defineConfig({
     site: SITE ?? "http://localhost:3000",
@@ -47,6 +46,8 @@ export default defineConfig({
     },
     markdown: {
         syntaxHighlight: "prism",
+        // @ts-ignore: incorrectly typed in @astrojs/markdown-remark
+        remarkPlugins: [gitCommitRemarkPlugin],
     },
     redirects: {
         "/work": "/resume",
