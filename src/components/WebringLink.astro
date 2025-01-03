@@ -2,7 +2,10 @@
 const { type } = Astro.props;
 
 const host = new URL(import.meta.env.SITE).hostname;
-const url = new URL(`/${type}?host=${host}`, "https://ring.purduehackers.com");
+const url =
+    type === "main"
+        ? new URL("/", "https://ring.purduehackers.com")
+        : new URL(`/${type}?host=${host}`, "https://ring.purduehackers.com");
 const href = url.toString();
 
 export interface Props {
