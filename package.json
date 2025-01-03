@@ -6,10 +6,10 @@
     "scripts": {
         "start": "astro dev",
         "dev": "astro dev",
-        "deploy:prod": "wrangler pages deploy dist --project-name personal-website-v7 --branch production",
-        "deploy:staging": "wrangler pages deploy dist --project-name personal-website-v7 --branch preview",
-        "build:prod": "astro build --mode production",
-        "build:staging": "astro build --mode staging",
+        "deploy:prod": "NODE_ENV=production wrangler pages deploy dist --project-name personal-website-v7 --branch production",
+        "deploy:staging": "NODE_ENV=staging wrangler pages deploy dist --project-name personal-website-v7 --branch preview",
+        "build:prod": "NODE_ENV=production astro build --mode production",
+        "build:staging": "NODE_ENV=staging astro build --mode staging",
         "lint": "astro check",
         "lint:fix": "astro check --fix",
         "format": "prettier --no-error-on-unmatched-pattern --check */**/*.{js,json,ts,css,md,mdx,astro} --cache --cache-strategy metadata",
@@ -52,6 +52,7 @@
         "prettier-plugin-astro": "^0.14.1",
         "react-compiler-runtime": "^19.0.0-beta-b2e8e9c-20241220",
         "typescript": "^5.7.2",
+        "vite": "^6.0.7",
         "wrangler": "^3.99.0"
     }
 }

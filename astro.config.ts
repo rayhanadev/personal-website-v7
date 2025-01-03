@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { loadEnv } from "vite";
 
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
@@ -9,8 +10,12 @@ import playformCompress from "@playform/compress";
 
 import { schema } from "./env.ts";
 
+const { SITE } = loadEnv(process.env.NODE_ENV!, process.cwd(), "");
+
+console.log("SITE", SITE);
+
 export default defineConfig({
-    site: process.env.SITE ?? "http://localhost:3000",
+    site: SITE ?? "http://localhost:3000",
     output: "static",
     integrations: [
         mdx(),
@@ -23,7 +28,11 @@ export default defineConfig({
                 forward: ["dataLayer.push"],
             },
         }),
-        sitemap(),
+        sitemap({
+            filter: (page) => {
+                return !page.includes("/thoughts/_");
+            },
+        }),
         playformCompress({
             Logger: 1,
         }),
