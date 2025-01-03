@@ -25,7 +25,7 @@ const entries = await getCollection("blog").then((entries) =>
                 isDraft: isDraft(entry.filePath!),
             };
         })
-        .sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()),
+        .sort((a, b) => dayjs(b.date).unix() - dayjs(a.date).unix()),
 );
 ---
 
