@@ -1,0 +1,24 @@
+---
+const { type } = Astro.props;
+
+const host = new URL(import.meta.env.SITE).hostname;
+const url = new URL(`/${type}?host=${host}`, "https://ring.purduehackers.com");
+const href = url.toString();
+
+export interface Props {
+    type: "next" | "previous" | "main" | "random";
+}
+---
+
+<a
+    href={href}
+    rel="noopener"
+    data-umami-event="outbound-link-click"
+    data-umami-event-url={href}
+    class:list={[
+        "underline",
+        "decoration-zinc-400",
+        "hover:decoration-foreground",
+        "inline",
+    ]}>{`[${type.slice(0, 4)}]`}</a
+>
