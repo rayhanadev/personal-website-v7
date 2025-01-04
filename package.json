@@ -38,6 +38,7 @@
         "picomatch": "^4.0.2",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "remark-prepend-url": "^1.0.1",
         "sanitize-html": "^2.14.0",
         "tailwindcss": "^3.4.17",
         "tailwindcss-animate": "^1.0.7"

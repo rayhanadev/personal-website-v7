@@ -25,7 +25,7 @@ const BLOG_CUSTOM_DATA = `
 <generator>@astrojs/rss</generator>
 <image>
   <link>https://www.rayhanadev.com/</link>
-  <title>RAYHANADEV</title>
+  <title>${BLOG_TITLE}</title>
   <url>https://www.rayhanadev.com/favicon-32x32.png</url>
   <description>Various pieces written and composed by Ray, related to software engineering and life.</description>
   <height>32</height>
@@ -36,7 +36,7 @@ const BLOG_CUSTOM_DATA = `
 <managingEditor>${EMAIL_ADDRESS} (${FULL_NAME})</managingEditor>
 <pubDate>${new Date().toUTCString()}</pubDate>
 <ttl>60</ttl>
-<webMaster>${EMAIL_ADDRESS}</webMaster>
+<webMaster>${EMAIL_ADDRESS} (${FULL_NAME})</webMaster>
 `;
 
 export const GET: APIRoute = async () => {

@@ -7,6 +7,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import playformCompress from "@playform/compress";
+import remarkPrependUrl from "remark-prepend-url";
 
 import { schema } from "./env.ts";
 import { gitCommitRemarkPlugin } from "./src/lib/blog/gitCommitRemarkPlugin.ts";
@@ -46,8 +47,11 @@ export default defineConfig({
     },
     markdown: {
         syntaxHighlight: "prism",
-        // @ts-ignore: incorrectly typed in @astrojs/markdown-remark
-        remarkPlugins: [gitCommitRemarkPlugin],
+        remarkPlugins: [
+            // @ts-ignore: incorrectly typed in @astrojs/markdown-remark
+            gitCommitRemarkPlugin,
+            [remarkPrependUrl, new URL(SITE ?? "http://localhost:3000")],
+        ],
     },
     redirects: {
         "/work": "/resume",
