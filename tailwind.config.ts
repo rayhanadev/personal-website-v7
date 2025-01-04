@@ -155,6 +155,16 @@ const config = {
                             marginTop: em(8, BASE_FONT_SIZE),
                             marginBottom: em(8, BASE_FONT_SIZE),
                         },
+                        blockquote: {
+                            fontWeight: "inherit",
+                            fontStyle: "normal",
+                        },
+                        "blockquote p:first-of-type::before": {
+                            content: "none",
+                        },
+                        "blockquote p:last-of-type::after": {
+                            content: "none",
+                        },
                     },
                 },
             }),
