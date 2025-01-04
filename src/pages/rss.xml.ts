@@ -80,6 +80,7 @@ export const GET: APIRoute = async () => {
                                 sanitizeHtml.defaults.allowedTags.concat([
                                     "img",
                                     "figure",
+                                    "figcaption",
                                 ]),
                         }),
                     customData: `<guid>${import.meta.env.SITE}/thoughts/${post.id}/</guid>`,

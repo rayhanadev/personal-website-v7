@@ -5,7 +5,7 @@ import { ClientRouter } from "astro:transitions";
 import { Head } from "astro-capo";
 import { SEO } from "astro-seo";
 
-import { JSONLD } from "lib/consts";
+import { BLOG_TITLE, JSONLD } from "lib/consts";
 
 import "styles/global.css";
 
@@ -111,7 +111,7 @@ export interface Props {
         <link
             rel="alternate"
             type="application/rss+xml"
-            title="Thoughts by Ray (@rayhanadev)"
+            title={BLOG_TITLE}
             href={`${import.meta.env.SITE}/rss.xml`}
         />
 

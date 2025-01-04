@@ -39,7 +39,7 @@ export const NAVIGATION = [
     { name: "work", href: "/resume" },
 ];
 
-export const BLOG_TITLE = "THOUGHTS: a blog written by Ray 🪴";
+export const BLOG_TITLE = "Thoughts by Ray (@rayhanadev) 🪴";
 export const BLOG_DESCRIPTION =
     "Various pieces written and composed by Ray, related to software engineering and life.";
 
