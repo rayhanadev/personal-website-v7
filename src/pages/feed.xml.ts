@@ -3,7 +3,12 @@ import { getCollection } from "astro:content";
 
 import rss from "@astrojs/rss";
 
-import { BLOG_TITLE, BLOG_DESCRIPTION, EMAIL_ADDRESS } from "lib/consts";
+import {
+    BLOG_TITLE,
+    BLOG_DESCRIPTION,
+    EMAIL_ADDRESS,
+    FULL_NAME,
+} from "lib/consts";
 import { parseDateFromFilePath } from "lib/blog/utils";
 
 export const GET: APIRoute = async () => {
@@ -17,10 +22,7 @@ export const GET: APIRoute = async () => {
         title: BLOG_TITLE,
         description: BLOG_DESCRIPTION,
         site: import.meta.env.SITE,
-        customData:
-            `<lastBuildDate>${Date.now()}</lastBuildDate>` +
-            `<atom:link href="${import.meta.env.SITE}/feed.xml" rel="self" type="application/rss+xml" />` +
-            `<pubDate>${Date.now()}</pubDate>`,
+        customData: `<atom:link href="${import.meta.env.SITE}/feed.xml" rel="self" type="application/rss+xml" />`,
         items: await Promise.all(
             blog.map(async (post) => {
                 const date = parseDateFromFilePath(post.filePath!);
@@ -32,7 +34,7 @@ export const GET: APIRoute = async () => {
                     pubDate: date,
                     language: "en-us",
                     copyright: `Copyright © ${new Date().getUTCFullYear()}, Rayhan Noufal Arayilakath`,
-                    author: EMAIL_ADDRESS,
+                    author: `${EMAIL_ADDRESS} <${FULL_NAME}>`,
                     managingEditor: EMAIL_ADDRESS,
                     webMaster: EMAIL_ADDRESS,
                     docs: "https://www.rssboard.org/rss-specification",
