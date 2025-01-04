@@ -1,5 +1,4 @@
 import { execSync } from "node:child_process";
-import path from "node:path";
 
 import type { Root } from "mdast";
 import type { Plugin } from "unified";
@@ -21,7 +20,9 @@ export function gitCommitRemarkPlugin(): RemarkPlugin {
             return;
         }
 
-        const commit = execSync(`git log -n 1 --pretty=format:%h -- ${path}`)
+        const commit = execSync(
+            `git log -n 1 --pretty=format:%h -- ${filepath}`,
+        )
             .toString()
             .trim();
 
