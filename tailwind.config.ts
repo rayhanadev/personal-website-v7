@@ -165,6 +165,16 @@ const config = {
                         "blockquote p:last-of-type::after": {
                             content: "none",
                         },
+                        figure: {
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                        },
+                        img: {
+                            maxHeight: "500px",
+                            width: "auto",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                        },
                     },
                 },
             }),
