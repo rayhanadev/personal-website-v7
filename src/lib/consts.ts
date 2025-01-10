@@ -1,11 +1,15 @@
 import path from "node:path";
 
 export const NICKNAME = "Ray";
+export const FIRST_NAME = "Rayhan Noufal";
+export const LAST_NAME = "Arayilakath";
 export const FULL_NAME = "Rayhan Noufal Arayilakath";
+export const TITLE = "Software Engineer";
 export const ALIAS = "rayhanadev";
 
 export const EMAIL_ADDRESS = "me@rayhanadev.com";
 export const PHONE_NUMBER = "+1 (817) 470-7345";
+export const PHONE_NUMBER_RAW = "8174707345";
 export const SOCIALS = {
     twitter: "https://twitter.com/rayhanadev",
     github: "https://github.com/rayhanadev",
