@@ -5,8 +5,8 @@ import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import playformCompress from "@playform/compress";
+import tailwindcss from "@tailwindcss/vite";
 import remarkPrependUrl from "remark-prepend-url";
 
 import { schema } from "./env.ts";
@@ -19,10 +19,6 @@ export default defineConfig({
     output: "static",
     integrations: [
         mdx(),
-        tailwind({
-            configFile: "./tailwind.config.ts",
-            applyBaseStyles: false,
-        }),
         partytown({
             config: {
                 forward: ["dataLayer.push"],
@@ -58,4 +54,7 @@ export default defineConfig({
         "/t/[id]": "/thoughts/[id]",
     },
     env: { schema },
+    vite: {
+        plugins: [tailwindcss()],
+    },
 });
