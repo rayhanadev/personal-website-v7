@@ -1,6 +1,4 @@
 import type { Config } from "tailwindcss";
-import { fontFamily as fonts } from "tailwindcss/defaultTheme";
-import type { PluginUtils } from "tailwindcss/types/config";
 
 // src: https://github.com/tailwindlabs/tailwindcss-typography/blob/383bee7004349a4877c619dafa9aff1854dac601/src/styles.js#L3-L17
 const round = (num: number) =>
@@ -14,7 +12,6 @@ const em = (px: number, base: number) => `${round(px / base)}em`;
 const BASE_FONT_SIZE = 24;
 
 const config = {
-    darkMode: ["class"],
     content: ["./src/**/*.{ts,tsx,astro,mdx}"],
     prefix: "",
     theme: {
@@ -26,9 +23,6 @@ const config = {
             },
         },
         extend: {
-            fontFamily: {
-                sans: ["SplineSansMono", ...fonts.mono],
-            },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
@@ -83,7 +77,7 @@ const config = {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
             },
-            typography: (theme: PluginUtils["theme"]) => ({
+            typography: ({ theme }) => ({
                 DEFAULT: {
                     css: {
                         fontSize: rem(BASE_FONT_SIZE),

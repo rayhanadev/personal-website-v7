@@ -55,6 +55,7 @@ export default defineConfig({
     },
     env: { schema },
     vite: {
+        // @ts-ignore: incorrectly typed in @tailwindcss/vite
         plugins: [tailwindcss()],
     },
 });
