@@ -4,6 +4,7 @@ description: Thoughts on unstructured, accessible, education.
 tags:
   - education
 ---
+
 I come from a unique educational background. I attended a small charter school in Westlake, TX, that fully integrated the International Baccalaureate (IB) program into its curriculum. With a graduating class of just 60 students, I had the opportunity to know most of my teachers personally—many of whom, in my junior and senior years, had doctorates. This made for an incredibly individualized and comprehensive education—one that was truly transformative.
 
 Two things stand out to me the most about my experience.
